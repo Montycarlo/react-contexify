@@ -61,9 +61,6 @@ class ContextMenuProvider extends PureComponent {
       ...rest
     } = this.props;
 
-    // reset refs
-    this.childrenRefs = [];
-
     return Children.map(this.props.children,
       child => (
         isValidElement(child)
