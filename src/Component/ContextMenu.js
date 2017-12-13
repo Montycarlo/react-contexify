@@ -15,6 +15,7 @@ class ContextMenu extends Component {
       PropTypes.number
     ]).isRequired,
     children: childrenOfType(Item).isRequired,
+    onBind: PropTypes.func,
     theme: PropTypes.string,
     animation: PropTypes.string
   };
@@ -180,6 +181,8 @@ class ContextMenu extends Component {
     e.stopPropagation();
     eventManager.emit('hideAll');
     this.refsFromProvider = refsFromProvider;
+
+    if(this.props.onBind != undefined) this.props.onBind(e, refsFromProvider);
 
     const { x, y } = this.getMousePosition(e);
 
